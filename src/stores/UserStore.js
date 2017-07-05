@@ -2,15 +2,19 @@ import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
 import userActions from '../actions/UserActions'
 import data from '../data/Data'
-import Auth from '../components/users/Auth'
 
 class UserStore extends EventEmitter {
   login (user) {
     data.loginUser(user)
     .then(respone => {
-      Auth.authenticateUser(respone.token)
-
       this.emit(this.events.LOGGEDIN, respone)
+    })
+  }
+
+  register (user) {
+    data.registerUser(user)
+    .then(response => {
+      this.emit(this.events.REGISTER, response)
     })
   }
 
@@ -19,7 +23,9 @@ class UserStore extends EventEmitter {
       case userActions.actionTypes.LOGIN:
         this.login(action.user)
         break
-
+      case userActions.actionTypes.REGISTER:
+        this.register(action.user)
+        break
       default: break
     }
   }
@@ -27,7 +33,8 @@ class UserStore extends EventEmitter {
 
 let userStore = new UserStore()
 userStore.events = {
-  LOGGEDIN: 'loggedin_user'
+  LOGGEDIN: 'loggedin_user',
+  REGISTER: 'register_user'
 }
 
 dispatcher.register(userStore.handleAction.bind(userStore))

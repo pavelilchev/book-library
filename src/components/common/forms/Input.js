@@ -5,8 +5,8 @@ export default class Input extends React.Component {
     let type = this.props.type || 'text'
     return (
       <div className='form-group'>
-        <label htmlFor={this.props.name} className='col-sm-2 control-label'>{this.props.placeholder}</label>
-        <div className='col-sm-10'>
+        <label htmlFor={this.props.name} className='col-sm-4 control-label'>{this.props.placeholder}</label>
+        <div className='col-sm-8'>
           <input
             type={type}
             className='form-control'

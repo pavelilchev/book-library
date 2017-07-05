@@ -28,7 +28,7 @@ export default class LoginPage extends React.Component {
 
   handleUserLogin (data) {
     if (!data.success) {
-      toastr.fail(data.message)
+      toastr.error(data.message)
     } else {
       Auth.authenticateUser(data.token)
       Auth.saveUser(data.user)
