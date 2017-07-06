@@ -24,13 +24,16 @@ export default class Navbar extends React.Component {
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            <Link className='navbar-brand' to='/'>Books</Link>
+            <Link className='navbar-brand' to='/'>Library</Link>
           </div>
 
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
             <ul className='nav navbar-nav'>
               <li className='active'>
-                <Link className='navbar-brand' to='/'>Home <span className='sr-only'>(current)</span></Link>
+                <Link className='navbar-brand' to='/'>Home </Link>
+              </li>
+              <li>
+                <Link className='navbar-brand' to='/books/all'>Books </Link>
               </li>
             </ul>
             {rightMenu}
